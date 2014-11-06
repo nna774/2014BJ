@@ -1,0 +1,108 @@
+\documentclass[12pt,a4]{article}
+
+\setlength{\textwidth}{17cm}
+\setlength{\textheight}{24cm}
+\setlength{\leftmargin}{-1cm}
+\setlength{\topmargin}{-2cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+
+\usepackage{xltxtra}
+\setmainfont{IPAPMincho}
+\setsansfont{IPAPGothic}
+\setmonofont{IPAGothic}
+\XeTeXlinebreaklocale "ja"
+
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{amsmath}
+
+\title{物理学情報処理論1レポート問題1}
+\author{nona7}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{物理量の次元}
+\subsection{次の物理量の次元を求めよ。ただし、長さ、質量、時間、電流、温度の次元をL,M,T,A, $\Theta$ とする。}
+\subsubsection{運動量}
+[運動量] = [ $ \frac{ML}{T} $ ]
+\subsubsection{エネルギー}
+[エネルギー] = [ $ \frac{ML^2}{T^2} $ ]
+\subsubsection{角速度}
+[角速度] = [ $ \frac{1}{T} $ ]
+\subsubsection{角運動量}
+[角運動量] = [ $ \frac{ML^2}{T} $ ]
+\subsubsection{振動数}
+[振動数] = [ $ \frac{1}{T} $ ]
+\subsubsection{力積}
+[力積] = [ $ \frac{ML}{T} $ ]
+\subsubsection{電荷}
+[電荷] = [ $ AT $ ]
+\subsubsection{電場}
+[電場] = [ $ \frac{ML}{AT^3} $ ]
+\subsubsection{磁束密度}
+[磁束密度] = [ $ \frac{M}{AT^2} $ ]
+\subsubsection{抵抗}
+[抵抗] = [ $ \frac{ML^2}{A^2T^3} $ ]
+\subsubsection{圧力}
+[圧力] = [ $ \frac{M}{LT^2} $ ]
+\subsubsection{比熱}
+[比熱] = [ $ \frac{L^2}{T^2\Theta} $ ]
+\subsubsection{エントロピー}
+[エントロピー] = [ $ \frac{ML^2}{T^3} $ ]
+
+\section{無次元化}
+\subsection{減衰振動の方程式と無次元化}
+\subsubsection{(a)}
+$ T = \sqrt{\frac{m}{k}} $ として
+$ t = T t^*, x = Lx^* $ とおく。
+$ dt = T dt^*, dx = L dx^* $ である。
+$ m \frac{d^2x}{dt^2} = -\nu v - kx $ に代入し、
+$ m \frac{d^2(Lx^*)}{T^2 {dt^*}^2} = -\nu \frac{d Lx^*}{T dt^*} - k(Lx^*) $ を得る。整理して、
+$ \frac{d^2x^*}{{dt^*}^2} = - \frac{T\nu}{m} \frac{dx^*}{dt^*} -x^* $。よって
+$ \frac{d^2x^*}{{dt^*}^2} = - 2 \alpha \frac{dx^*}{dt^*} - x^* $ の $ \alpha $ は
+$ \alpha = \frac{\nu}{2\sqrt{mk}} $ である。
+
+\subsubsection{(b)}
+$ \frac{d^2x}{dt^2} = - 2 \alpha \frac{dx}{dt} - x $ , $ x(0) = 1 $ , $ \frac{dx}{dt}(0) = 0 $ \\
+の特性方程式 $ y^2 + 2\alpha + 1 = 0 $ を解くと、
+$ y = -\alpha \pm \sqrt{\alpha^2-1} $
+
+\medskip
+\noindent
+$ \alpha \pm 1 $ の時 \\
+$ x = e^{\mp t}(C_1 + C_2 t) $ \\
+$ x(0) = 1 $ より $ C_1 = 1 $ \\
+$ \frac{dx}{dt}(0) = 0 $ より $ C_2 = -1 $ \\
+よって \\
+$ x = e^{\mp t}(1 - t) $ (複号同順)
+
+\medskip
+\noindent
+$ | \alpha | > 1 $ の時 \\
+$ x = e^{(-\alpha+\sqrt{\alpha^2-1})t} C_1 + e^{(-\alpha-\sqrt{\alpha^2-1})t} C_2 $\\
+$ x(0) = 1 $ より $ C_1 + C_2 = 1 $ \\
+$ \frac{dx}{dt}(0) = 0 $ より $ C_1 - C_2 = \frac{\alpha}{\sqrt{\alpha^2-1}} $ \\
+合せて \\
+\[
+\begin{cases}
+  C_1 = \frac{1}{2}(1+\frac{\alpha}{\sqrt{\alpha^2-1}}) \\
+  C_2 = \frac{1}{2}(1-\frac{\alpha}{\sqrt{\alpha^2-1}}) 
+\end{cases}
+\]
+となり、
+$ x = \frac{1}{2} (e^{(-\alpha+\sqrt{\alpha^2-1})t} (1+\frac{\alpha}{\sqrt{\alpha^2-1}}) + e^{(-\alpha-\sqrt{\alpha^2-1})t} (1-\frac{\alpha}{\sqrt{\alpha^2-1}})) $\\
+
+\medskip
+\noindent
+$ | \alpha | < 1 $ の時 \\
+$ x = e^{-\alpha t}(C_1 \cos{\sqrt{1-\alpha^2}t} + C_2 \sin{\sqrt{1-\alpha^2}t}) $\\
+$ x(0) = 1 $ より $ C_1 = 1 $ \\
+$ \frac{dx}{dt}(0) = 0 $ より $ C_2 = 0 $ \\
+よって \\
+$ x = e^{-\alpha t} \cos{\sqrt{1-\alpha^2}t}  $
+
+\end{document}
