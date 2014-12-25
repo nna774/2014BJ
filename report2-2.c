@@ -15,8 +15,8 @@ void update(double* xs){
     xs[0] = tmp[0] + h * tmp[2];
     xs[1] = tmp[1] + h * tmp[3];
     double m = pow(xs[0] * xs[0] + xs[1] * xs[1], -3.0/2.0);
-    xs[2] = tmp[2] - h * xs[0] * m;
-    xs[3] = tmp[3] - h * xs[1] * m;
+    xs[2] = tmp[2] - h * tmp[0] * m; // こうすると精度がつらくなる(オイラー法に落ちる)
+    xs[3] = tmp[3] - h * tmp[1] * m; // 
 }
 
 int main() {
